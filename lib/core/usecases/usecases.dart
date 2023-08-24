@@ -1,4 +1,4 @@
-import '../utils/typedefs.dart';
+import 'package:toknote/core/utils/typedefs.dart';
 
 /// Used for `Usecase`, who need parameters.
 abstract class UsecaseWithParams<Type, Params> {

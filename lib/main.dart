@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'core/res/colours.dart';
-import 'core/res/fonts.dart';
-import 'core/services/injection_container.dart';
-import 'core/services/router.dart';
+import 'package:toknote/core/res/colours.dart';
+import 'package:toknote/core/res/fonts.dart';
+import 'package:toknote/core/services/injection_container.dart';
+import 'package:toknote/core/services/router.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Toknote',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch(accentColor: Colours.primaryColour),
         useMaterial3: true,

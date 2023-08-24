@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:toknote/core/errors/exceptions.dart';
 import 'package:toknote/core/errors/failures.dart';
 import 'package:toknote/src/on_boarding/data/datasources/on_boarding_local_data_source.dart';
 import 'package:toknote/src/on_boarding/data/repositories/on_boarding_repository_impl.dart';
 import 'package:toknote/src/on_boarding/domain/repositories/on_boarding_repository.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
 
 class MockOnBoardingLocalDataSrc extends Mock
     implements OnBoardingLocalDataSource {}

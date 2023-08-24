@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import 'exceptions.dart';
+import 'package:toknote/core/errors/exceptions.dart';
 
 abstract class Failure extends Equatable {
   Failure({

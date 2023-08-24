@@ -1,8 +1,8 @@
-import 'package:toknote/core/errors/exceptions.dart';
-import 'package:toknote/src/on_boarding/data/datasources/on_boarding_local_data_source.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:toknote/core/errors/exceptions.dart';
+import 'package:toknote/src/on_boarding/data/datasources/on_boarding_local_data_source.dart';
 
 class MockSharedPreferences extends Mock implements SharedPreferences {}
 

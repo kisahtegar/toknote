@@ -1,6 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../../core/errors/exceptions.dart';
+import 'package:toknote/core/errors/exceptions.dart';
 
 abstract class OnBoardingLocalDataSource {
   const OnBoardingLocalDataSource();

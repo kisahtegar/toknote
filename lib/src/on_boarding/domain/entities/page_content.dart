@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import '../../../../core/res/media_res.dart';
+import 'package:toknote/core/res/media_res.dart';
 
 class PageContent extends Equatable {
   const PageContent({

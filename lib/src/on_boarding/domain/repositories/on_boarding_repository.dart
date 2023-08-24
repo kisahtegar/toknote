@@ -1,4 +1,4 @@
-import '../../../../core/utils/typedefs.dart';
+import 'package:toknote/core/utils/typedefs.dart';
 
 abstract class OnBoardingRepository {
   const OnBoardingRepository();

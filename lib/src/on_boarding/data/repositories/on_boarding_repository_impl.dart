@@ -1,10 +1,9 @@
 import 'package:dartz/dartz.dart';
-
-import '../../../../core/errors/exceptions.dart';
-import '../../../../core/errors/failures.dart';
-import '../../../../core/utils/typedefs.dart';
-import '../../domain/repositories/on_boarding_repository.dart';
-import '../datasources/on_boarding_local_data_source.dart';
+import 'package:toknote/core/errors/exceptions.dart';
+import 'package:toknote/core/errors/failures.dart';
+import 'package:toknote/core/utils/typedefs.dart';
+import 'package:toknote/src/on_boarding/data/datasources/on_boarding_local_data_source.dart';
+import 'package:toknote/src/on_boarding/domain/repositories/on_boarding_repository.dart';
 
 class OnBoardingRepositoryImpl implements OnBoardingRepository {
   const OnBoardingRepositoryImpl(this._localDataSource);
