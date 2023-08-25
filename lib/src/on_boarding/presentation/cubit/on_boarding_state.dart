@@ -24,7 +24,7 @@ final class UserCached extends OnBoardingState {
 }
 
 final class OnBoardingStatus extends OnBoardingState {
-  const OnBoardingStatus(this.isFirstTimer);
+  const OnBoardingStatus({required this.isFirstTimer});
 
   final bool isFirstTimer;
 

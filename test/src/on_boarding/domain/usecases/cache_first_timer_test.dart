@@ -18,7 +18,7 @@ void main() {
   });
 
   test(
-    'should call the [OnBoardingRepository.cacheFirstTimer]'
+    'should call the [OnBoardingRepository.cacheFirstTimer] '
     'and return the right data',
     () async {
       // Arrange

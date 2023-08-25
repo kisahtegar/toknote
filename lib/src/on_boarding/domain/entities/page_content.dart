@@ -7,6 +7,7 @@ class PageContent extends Equatable {
     required this.image,
     required this.title,
     required this.description,
+    required this.buttonName,
   });
 
   const PageContent.first()
@@ -14,6 +15,7 @@ class PageContent extends Equatable {
           image: MediaRes.shopHouse,
           title: 'Manage Your Store',
           description: 'easily organize your selling items for the better ',
+          buttonName: 'Next',
         );
 
   const PageContent.second()
@@ -21,7 +23,9 @@ class PageContent extends Equatable {
           image: MediaRes.shopList,
           title: 'Record Your Activities',
           description:
-              'You can record your activities starting from incoming or outgoing goods and so on',
+              'You can record your activities starting from incoming or '
+              'outgoing goods and so on',
+          buttonName: 'Next',
         );
 
   const PageContent.third()
@@ -29,12 +33,14 @@ class PageContent extends Equatable {
           image: MediaRes.shopView,
           title: 'Easy to join the lesson',
           description: 'Find the convenience of managing your ' "store's goods",
+          buttonName: 'Get Started',
         );
 
   final String image;
   final String title;
   final String description;
+  final String buttonName;
 
   @override
-  List<Object?> get props => [image, title, description];
+  List<Object?> get props => [image, title, description, buttonName];
 }

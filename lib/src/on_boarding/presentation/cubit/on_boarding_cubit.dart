@@ -36,8 +36,8 @@ class OnBoardingCubit extends Cubit<OnBoardingState> {
     final result = await _checkIfUserIsFirstTimer();
 
     result.fold(
-      (failure) => emit(const OnBoardingStatus(true)),
-      (status) => emit(OnBoardingStatus(status)),
+      (failure) => emit(const OnBoardingStatus(isFirstTimer: true)),
+      (status) => emit(OnBoardingStatus(isFirstTimer: status)),
     );
   }
 }
