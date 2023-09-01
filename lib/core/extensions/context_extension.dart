@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:toknote/core/common/app/providers/user_provider.dart';
+import 'package:toknote/src/auth/domain/entities/user.dart';
 
 /// Extension for context
 extension ContextExt on BuildContext {
@@ -9,4 +12,8 @@ extension ContextExt on BuildContext {
   Size get size => mediaQuery.size;
   double get width => size.width;
   double get height => size.height;
+
+  UserProvider get userProvider => read<UserProvider>();
+
+  LocalUser? get currentUser => userProvider.user;
 }

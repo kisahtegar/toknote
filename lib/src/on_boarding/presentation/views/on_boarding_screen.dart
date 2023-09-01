@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:toknote/core/common/views/loading_view.dart';
-import 'package:toknote/core/common/widgets/gradient_background.dart';
+import 'package:toknote/core/common/widgets/gradient_background_image.dart';
 import 'package:toknote/core/res/colours.dart';
 import 'package:toknote/core/res/media_res.dart';
 import 'package:toknote/src/on_boarding/domain/entities/page_content.dart';
@@ -32,14 +32,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: GradientBackground(
+      body: GradientBackgroundImage(
         image: MediaRes.onBoardingBackground,
         child: BlocConsumer<OnBoardingCubit, OnBoardingState>(
           listener: (context, state) {
             if (state is OnBoardingStatus && !state.isFirstTimer) {
               Navigator.pushReplacementNamed(context, '/home');
             } else if (state is UserCached) {
-              // TODO(User-Cached-Handler): Push to the appropriate screen
+              Navigator.pushReplacementNamed(context, '/');
             }
           },
           builder: (context, state) {

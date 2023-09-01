@@ -62,6 +62,7 @@ class OnBoardingBody extends StatelessWidget {
                       duration: const Duration(milliseconds: 500),
                       curve: Curves.easeInOut,
                     );
+                    return;
                   }
                   context.read<OnBoardingCubit>().cacheFirstTimer();
                 },
