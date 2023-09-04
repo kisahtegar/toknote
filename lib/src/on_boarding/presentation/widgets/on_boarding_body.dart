@@ -6,6 +6,15 @@ import 'package:toknote/core/res/fonts.dart';
 import 'package:toknote/src/on_boarding/domain/entities/page_content.dart';
 import 'package:toknote/src/on_boarding/presentation/cubit/on_boarding_cubit.dart';
 
+/// The `OnBoardingBody` widget displays the content for each onboarding page.
+///
+/// This widget is responsible for rendering the image, title, description, and
+/// button for each onboarding page. It is used within the onboarding screen and
+/// receives information about the current page's content.
+///
+/// - [pageController]: A [PageController] used for page navigation.
+/// - [index]: The index of the current page.
+/// - [pageContent]: The content to display on the current page.
 class OnBoardingBody extends StatelessWidget {
   const OnBoardingBody({
     required this.pageController,
@@ -14,8 +23,13 @@ class OnBoardingBody extends StatelessWidget {
     super.key,
   });
 
+  /// The controller for navigating between onboarding pages.
   final PageController pageController;
+
+  /// The index of the current onboarding page.
   final int index;
+
+  /// The content to display on the current onboarding page.
   final PageContent pageContent;
 
   @override
@@ -56,13 +70,15 @@ class OnBoardingBody extends StatelessWidget {
                 ),
                 onPressed: () {
                   if (pageContent.buttonName == 'Next') {
-                    // animation
+                    // Animate to the next page.
                     pageController.animateToPage(
                       index,
                       duration: const Duration(milliseconds: 500),
                       curve: Curves.easeInOut,
                     );
+                    return;
                   }
+                  // Cache first-time user information.
                   context.read<OnBoardingCubit>().cacheFirstTimer();
                 },
                 child: Text(
