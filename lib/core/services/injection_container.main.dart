@@ -1,12 +1,18 @@
 part of 'injection_container.dart';
 
+/// The Service Locator instance.
 final sl = GetIt.instance;
 
+/// Initializes the dependency injection container.
+///
+/// This function sets up dependencies related to the onboarding feature and
+/// authentication.
 Future<void> init() async {
   await _initOnBoarding();
   await _initAuth();
 }
 
+/// Initializes the dependencies related to the onboarding feature.
 Future<void> _initOnBoarding() async {
   // External Dependencies
   final prefs = await SharedPreferences.getInstance();
@@ -33,6 +39,7 @@ Future<void> _initOnBoarding() async {
     ..registerLazySingleton(() => prefs);
 }
 
+/// Initializes the dependencies related to authentication.
 Future<void> _initAuth() async {
   sl
     ..registerFactory(

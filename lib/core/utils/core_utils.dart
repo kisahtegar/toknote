@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:toknote/core/res/colours.dart';
 
+/// The `CoreUtils` class provides utility functions for common tasks within
+/// your application. It has a private constructor `const CoreUtils._()` to
+/// prevent external instantiation.
 class CoreUtils {
   const CoreUtils._();
 
-  /// Used to showing snackbar.
+  /// Displays a SnackBar notification within the application.
+  ///
+  /// The [context] parameter is used to obtain the `ScaffoldMessenger` for
+  /// showing the SnackBar, and the [message] parameter contains the message to
+  /// be displayed.
   static void showSnackBar(BuildContext context, String message) {
     ScaffoldMessenger.of(context)
       ..removeCurrentSnackBar()

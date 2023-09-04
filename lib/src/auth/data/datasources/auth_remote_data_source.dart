@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'dart:convert';
 import 'dart:io';
 
@@ -11,28 +13,39 @@ import 'package:toknote/core/usecases/constants.dart';
 import 'package:toknote/core/utils/typedefs.dart';
 import 'package:toknote/src/auth/data/models/user_model.dart';
 
+/// An abstract class defining methods for performing remote authentication-related
+/// operations.
 abstract class AuthRemoteDataSource {
   const AuthRemoteDataSource();
 
+  /// Sends a password reset email to the provided email address.
   Future<void> forgotPassword(String email);
 
+  /// Signs in a user with the provided email and password, retrieves user data
+  /// from Firestore if the user exists, or uploads user data if it doesn't exist.
   Future<LocalUserModel> signIn({
     required String email,
     required String password,
   });
 
+  /// Creates a new user with the provided email, full name, and password.
   Future<void> signUp({
     required String email,
     required String fullName,
     required String password,
   });
 
+  /// Updates various user properties based on the provided [UpdateUserAction].
+  /// Handles different scenarios, such as uploading profile pictures to Firebase
+  /// Storage and updating user data in Firestore.
   Future<void> updateUser({
     required UpdateUserAction action,
     dynamic userData,
   });
 }
 
+/// A concrete implementation of [AuthRemoteDataSource] that handles remote data
+/// source operations related to user authentication in the application.
 class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   const AuthRemoteDataSourceImpl({
     required FirebaseAuth authClient,
@@ -46,7 +59,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   final FirebaseFirestore _cloudStoreClient;
   final FirebaseStorage _dbClient;
 
-  /// Implementations for forgotten password.
+  /// Sends a password reset email to the provided email address.
   @override
   Future<void> forgotPassword(String email) async {
     try {
@@ -65,7 +78,8 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     }
   }
 
-  /// Implementation for sign in.
+  /// Signs in a user with the provided email and password, retrieves user data
+  /// from Firestore if the user exists, or uploads user data if it doesn't exist.
   @override
   Future<LocalUserModel> signIn({
     required String email,
@@ -123,7 +137,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     }
   }
 
-  /// Implementation for sign up.
+  /// Creates a new user with the provided email, full name, and password.
   @override
   Future<void> signUp({
     required String email,
@@ -157,6 +171,9 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     }
   }
 
+  /// Updates various user properties based on the provided [UpdateUserAction].
+  /// Handles different scenarios, such as uploading profile pictures to Firebase
+  /// Storage and updating user data in Firestore.
   @override
   Future<void> updateUser({
     required UpdateUserAction action,
@@ -179,20 +196,20 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
           await _updateUserData({'bio': userData as String});
 
         case UpdateUserAction.profilePic:
-          // Get reference from firebase storage
+          // Get reference from Firebase Storage
           final ref = _dbClient
               .ref()
               .child('profile_pics/${_authClient.currentUser?.uid}');
-          // Upload / putfile profilePic to reference
+          // Upload/put file profilePic to reference
           await ref.putFile(userData as File);
-          // Get url from reference
+          // Get URL from reference
           final url = await ref.getDownloadURL();
           // Update data...
           await _authClient.currentUser?.updatePhotoURL(url);
           await _updateUserData({'profilePic': url});
 
         case UpdateUserAction.password:
-          // Check email is existing
+          // Check if email is existing
           if (_authClient.currentUser?.email == null) {
             throw const ServerException(
               message: 'User does not exist',
@@ -227,12 +244,12 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     }
   }
 
-  /// This used to get user data by UID.
+  /// Retrieves user data from Firestore based on the provided user ID (UID).
   Future<DocumentSnapshot<DataMap>> _getUserData(String uid) async {
     return _cloudStoreClient.collection('users').doc(uid).get();
   }
 
-  /// This used to set/upload user data.
+  /// Sets or uploads user data to Firestore based on the provided User object.
   Future<void> _setUserData(User user, String fallbackEmail) async {
     await _cloudStoreClient.collection('users').doc(user.uid).set(
           LocalUserModel(
@@ -245,7 +262,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
         );
   }
 
-  /// This used to update user data.
+  /// Updates user data in Firestore with the provided data.
   Future<void> _updateUserData(DataMap data) async {
     await _cloudStoreClient
         .collection('users')
