@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:toknote/core/common/widgets/i_field.dart';
 
+/// A reusable sign-in form widget that includes input fields for email and
+/// password.
 class SignInForm extends StatefulWidget {
+  /// Creates a [SignInForm] widget with required controllers and form key.
   const SignInForm({
     required this.emailController,
     required this.passwordController,
@@ -9,8 +12,13 @@ class SignInForm extends StatefulWidget {
     super.key,
   });
 
+  /// The controller for the email input field.
   final TextEditingController emailController;
+
+  /// The controller for the password input field.
   final TextEditingController passwordController;
+
+  /// A global key for the form associated with this sign-in form.
   final GlobalKey<FormState> formKey;
 
   @override
@@ -26,12 +34,15 @@ class _SignInFormState extends State<SignInForm> {
       key: widget.formKey,
       child: Column(
         children: [
+          /// Email input field
           IField(
             controller: widget.emailController,
             hintText: 'Email Address',
             keyboardType: TextInputType.emailAddress,
           ),
           const SizedBox(height: 25),
+
+          /// Password input field with show/hide password functionality
           IField(
             controller: widget.passwordController,
             hintText: 'Password',

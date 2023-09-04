@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:dartz/dartz.dart';
 import 'package:toknote/core/enums/update_user.dart';
 import 'package:toknote/core/errors/exceptions.dart';
@@ -7,11 +9,15 @@ import 'package:toknote/src/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:toknote/src/auth/domain/entities/user.dart';
 import 'package:toknote/src/auth/domain/repos/auth_repo.dart';
 
+/// Implementation of the [AuthRepo] interface for handling authentication operations.
 class AuthRepoImpl extends AuthRepo {
   AuthRepoImpl(this._remoteDataSource);
 
   final AuthRemoteDataSource _remoteDataSource;
 
+  /// Sends a password reset request for the given [email].
+  ///
+  /// Returns a [ResultFuture] indicating the success or failure of the operation.
   @override
   ResultFuture<void> forgotPassword(String email) async {
     try {
@@ -22,6 +28,10 @@ class AuthRepoImpl extends AuthRepo {
     }
   }
 
+  /// Signs in the user with the provided [email] and [password].
+  ///
+  /// Returns a [ResultFuture] containing the [LocalUser] if successful,
+  /// or an error [Failure] if the operation fails.
   @override
   ResultFuture<LocalUser> signIn({
     required String email,
@@ -38,6 +48,9 @@ class AuthRepoImpl extends AuthRepo {
     }
   }
 
+  /// Signs up a new user with the provided [email], [fullName], and [password].
+  ///
+  /// Returns a [ResultFuture] indicating the success or failure of the operation.
   @override
   ResultFuture<void> signUp({
     required String email,
@@ -56,6 +69,9 @@ class AuthRepoImpl extends AuthRepo {
     }
   }
 
+  /// Updates the user's profile based on the [action] and [userData].
+  ///
+  /// Returns a [ResultFuture] indicating the success or failure of the operation.
   @override
   ResultFuture<void> updateUser({
     required UpdateUserAction action,
