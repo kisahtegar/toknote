@@ -1,5 +1,3 @@
-// ignore_for_file: lines_longer_than_80_chars
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -11,17 +9,9 @@ import 'package:toknote/src/on_boarding/domain/entities/page_content.dart';
 import 'package:toknote/src/on_boarding/presentation/cubit/on_boarding_cubit.dart';
 import 'package:toknote/src/on_boarding/presentation/widgets/on_boarding_body.dart';
 
-/// The `OnBoardingScreen` widget displays onboarding content to new users.
-///
-/// This widget is the entry point for onboarding new users to the app. It
-/// includes multiple pages with information and a navigation indicator.
-///
-/// - [pageController]: A [PageController] for navigating between onboarding pages.
-/// - [currentIndex]: The current index of the active onboarding page.
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
 
-  /// The route name for this screen.
   static const routeName = '/';
 
   @override

@@ -9,11 +9,9 @@ import 'package:toknote/src/auth/presentation/bloc/auth_bloc.dart';
 import 'package:toknote/src/auth/presentation/views/sign_in_screen.dart';
 import 'package:toknote/src/auth/presentation/widgets/sign_up_form.dart';
 
-/// A screen for user sign-up.
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
-  /// The route name for this screen.
   static const routeName = '/sign-up';
 
   @override

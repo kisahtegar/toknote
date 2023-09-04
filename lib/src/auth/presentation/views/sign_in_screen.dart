@@ -12,11 +12,9 @@ import 'package:toknote/src/auth/presentation/views/sign_up_screen.dart';
 import 'package:toknote/src/auth/presentation/widgets/sign_in_form.dart';
 import 'package:toknote/src/dashboard/presentation/views/dashboard.dart';
 
-/// The screen for user sign-in.
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
 
-  /// The route name for this screen.
   static const routeName = '/sign-in';
 
   @override

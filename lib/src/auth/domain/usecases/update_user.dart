@@ -4,14 +4,7 @@ import 'package:toknote/core/usecases/usecases.dart';
 import 'package:toknote/core/utils/typedefs.dart';
 import 'package:toknote/src/auth/domain/repos/auth_repo.dart';
 
-/// The `UpdateUser` class represents a use case for updating user profile
-/// information. It depends on an `AuthRepo` instance to perform the actual
-/// profile update operation.
 class UpdateUser extends UsecaseWithParams<void, UpdateUserParams> {
-  /// Initializes a new instance of the `UpdateUser` use case.
-  ///
-  /// [_repo] - The authentication repository (`AuthRepo`) responsible for
-  /// handling user profile update requests.
   const UpdateUser(this._repo);
 
   final AuthRepo _repo;
@@ -23,21 +16,9 @@ class UpdateUser extends UsecaseWithParams<void, UpdateUserParams> {
       );
 }
 
-/// The `UpdateUserParams` class defines the required parameters for profile
-/// updates, including the action type and associated user data. It can be used
-/// to create instances of these parameters for invoking the update user profile
-/// use case.
 class UpdateUserParams extends Equatable {
-  /// Initializes a new instance of `UpdateUserParams` with the provided action
-  /// type and user data.
-  ///
-  /// - [action] - The type of profile update action to perform.
-  /// - [userData] - The user data associated with the action.
   const UpdateUserParams({required this.action, required this.userData});
 
-  /// Creates an instance of `UpdateUserParams` with default or empty values for
-  /// the action type and user data. This is useful for initializing an empty
-  /// update user profile parameters object when needed.
   const UpdateUserParams.empty()
       : this(action: UpdateUserAction.displayName, userData: '');
 

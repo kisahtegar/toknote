@@ -3,10 +3,6 @@ import 'package:lottie/lottie.dart';
 
 import 'package:toknote/core/res/media_res.dart';
 
-/// The `PageUnderConstruction` widget is used to display a "Page Under
-/// Construction" screen in your app. This screen is typically shown to inform
-/// users that a particular page or feature is not yet available or is currently
-/// in development.
 class PageUnderConstruction extends StatelessWidget {
   const PageUnderConstruction({super.key});
 
@@ -18,17 +14,11 @@ class PageUnderConstruction extends StatelessWidget {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(MediaRes.onBoardingBackground),
-            // Ensure the background image covers the entire screen.
             fit: BoxFit.cover,
           ),
         ),
         child: SafeArea(
-          child: Center(
-            child: Lottie.asset(
-              // Use Lottie animation to display the construction animation.
-              MediaRes.pageUnderConstruction,
-            ),
-          ),
+          child: Center(child: Lottie.asset(MediaRes.pageUnderConstruction)),
         ),
       ),
     );

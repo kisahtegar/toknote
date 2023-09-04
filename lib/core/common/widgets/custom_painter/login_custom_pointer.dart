@@ -2,11 +2,10 @@
 
 import 'package:flutter/material.dart';
 
-/// A custom painter that draws a stylized top background for a login screen.
 class LoginTopCustomPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    // Square 1
+    // Square
 
     Paint paint_fill_0 = Paint()
       ..color = const Color.fromARGB(255, 23, 108, 174)
@@ -42,7 +41,7 @@ class LoginTopCustomPainter extends CustomPainter {
 
     canvas.drawPath(path_0, paint_fill_0);
 
-    // Square 1 Border
+    // Square
 
     Paint paint_stroke_0 = Paint()
       ..color = const Color.fromARGB(0, 243, 33, 33)
@@ -53,7 +52,7 @@ class LoginTopCustomPainter extends CustomPainter {
 
     canvas.drawPath(path_0, paint_stroke_0);
 
-    // Square 2
+    // Square Copy
 
     Paint paint_fill_1 = Paint()
       ..color = const Color.fromARGB(178, 0, 135, 239)
@@ -89,7 +88,7 @@ class LoginTopCustomPainter extends CustomPainter {
 
     canvas.drawPath(path_1, paint_fill_1);
 
-    // Square 2 Border
+    // Square Copy
 
     Paint paint_stroke_1 = Paint()
       ..color = const Color.fromARGB(0, 33, 150, 243)
@@ -107,11 +106,10 @@ class LoginTopCustomPainter extends CustomPainter {
   }
 }
 
-/// A custom painter that draws a stylized bottom background for a login screen.
 class LoginBottomCustomPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    // Square 1
+    // Square
 
     Paint paint_fill_0 = Paint()
       ..color = const Color.fromARGB(255, 23, 108, 174)
@@ -147,7 +145,7 @@ class LoginBottomCustomPainter extends CustomPainter {
 
     canvas.drawPath(path_0, paint_fill_0);
 
-    // Square 1 Border
+    // Square
 
     Paint paint_stroke_0 = Paint()
       ..color = const Color.fromARGB(0, 243, 33, 33)
@@ -158,7 +156,7 @@ class LoginBottomCustomPainter extends CustomPainter {
 
     canvas.drawPath(path_0, paint_stroke_0);
 
-    // Square 2
+    // Square Copy
 
     Paint paint_fill_1 = Paint()
       ..color = const Color.fromARGB(178, 0, 135, 239)
@@ -194,7 +192,7 @@ class LoginBottomCustomPainter extends CustomPainter {
 
     canvas.drawPath(path_1, paint_fill_1);
 
-    // Square 2 Border
+    // Square Copy
 
     Paint paint_stroke_1 = Paint()
       ..color = const Color.fromARGB(0, 33, 150, 243)
