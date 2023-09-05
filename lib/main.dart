@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
 import 'package:toknote/core/common/app/providers/user_provider.dart';
@@ -9,6 +10,7 @@ import 'package:toknote/core/res/fonts.dart';
 import 'package:toknote/core/services/firebase_options.dart';
 import 'package:toknote/core/services/injection_container.dart';
 import 'package:toknote/core/services/router.dart';
+import 'package:toknote/src/dashboard/presentation/providers/dashboard_controllet.dart';
 
 /// The `main` function initializes the Flutter app and sets up Firebase
 /// services and authentication providers.
@@ -30,6 +32,14 @@ Future<void> main() async {
   // Initialize other app dependencies.
   await init();
 
+  // Set the preferred screen orientations to portrait-up and portrait-down.
+  // This means that the app will only allow portrait orientations, preventing
+  // the screen from rotating to landscape mode.
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
   // Remove the native splash screen.
   FlutterNativeSplash.remove();
   runApp(const MyApp());
@@ -42,8 +52,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => UserProvider(),
+    return MultiProvider(
+      providers: [
+        // Provide the UserProvider for managing user-related data.
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+
+        // Provide the DashboardController for controlling dashboard state.
+        ChangeNotifierProvider(create: (_) => DashboardController()),
+      ],
       child: MaterialApp(
         title: 'Toknote',
         debugShowCheckedModeBanner: false,
