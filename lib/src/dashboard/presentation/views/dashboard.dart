@@ -1,7 +1,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:toknote/core/common/app/providers/user_provider.dart';
 import 'package:toknote/core/res/colours.dart';
@@ -25,18 +24,6 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  @override
-  void initState() {
-    super.initState();
-    // Set the preferred screen orientations to portrait-up and portrait-down.
-    // This means that the app will only allow portrait orientations, preventing
-    // the screen from rotating to landscape mode.
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
-  }
-
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
@@ -63,11 +50,12 @@ class _DashboardState extends State<Dashboard> {
                 // Displays tabs at the bottom of the screen and allows users to
                 // switch between different sections.
                 currentIndex: controller.currentIndex,
-                // showSelectedLabels: false,
                 backgroundColor: Colors.white,
                 elevation: 8,
                 type: BottomNavigationBarType.fixed,
                 onTap: controller.changeIndex,
+                selectedFontSize: 11,
+                unselectedFontSize: 11,
                 items: [
                   BottomNavigationBarItem(
                     icon: Icon(

@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:provider/provider.dart';
 import 'package:toknote/core/common/app/providers/user_provider.dart';
@@ -30,6 +31,14 @@ Future<void> main() async {
 
   // Initialize other app dependencies.
   await init();
+
+  // Set the preferred screen orientations to portrait-up and portrait-down.
+  // This means that the app will only allow portrait orientations, preventing
+  // the screen from rotating to landscape mode.
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
 
   // Remove the native splash screen.
   FlutterNativeSplash.remove();
