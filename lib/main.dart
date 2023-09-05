@@ -9,6 +9,7 @@ import 'package:toknote/core/res/fonts.dart';
 import 'package:toknote/core/services/firebase_options.dart';
 import 'package:toknote/core/services/injection_container.dart';
 import 'package:toknote/core/services/router.dart';
+import 'package:toknote/src/dashboard/presentation/providers/dashboard_controllet.dart';
 
 /// The `main` function initializes the Flutter app and sets up Firebase
 /// services and authentication providers.
@@ -42,8 +43,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => UserProvider(),
+    return MultiProvider(
+      providers: [
+        // Provide the UserProvider for managing user-related data.
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+
+        // Provide the DashboardController for controlling dashboard state.
+        ChangeNotifierProvider(create: (_) => DashboardController()),
+      ],
       child: MaterialApp(
         title: 'Toknote',
         debugShowCheckedModeBanner: false,
