@@ -4,7 +4,7 @@ enum UpdateUserAction {
   email,
   role,
   displayName,
-  bio,
+  phoneNumber,
   profilePic,
   password,
 }

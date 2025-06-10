@@ -6,6 +6,7 @@ class MediaRes {
   static const _baseVector = 'assets/vectors';
   static const _baseImage = 'assets/images';
   static const _baseLottie = 'assets/lotties';
+  static const _baseIcon = 'assets/icons';
 
   // Vectors
   static const shopHouse = '$_baseVector/shop_house.png';
@@ -20,4 +21,9 @@ class MediaRes {
   static const noNotifications = '$_baseLottie/no_notifications.json';
   static const pageUnderConstruction =
       '$_baseLottie/page_under_construction.json';
+
+  // Icon
+  static const user = '$_baseIcon/user.png';
+  static const role = '$_baseIcon/role.png';
+  static const store = '$_baseIcon/store.png';
 }

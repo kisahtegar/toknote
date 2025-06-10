@@ -9,7 +9,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart' show debugPrintStack;
 import 'package:toknote/core/enums/update_user.dart';
 import 'package:toknote/core/errors/exceptions.dart';
-import 'package:toknote/core/usecases/constants.dart';
 import 'package:toknote/core/utils/typedefs.dart';
 import 'package:toknote/src/auth/data/models/user_model.dart';
 
@@ -153,7 +152,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
       // Setup user data.
       await userCred.user?.sendEmailVerification();
       await userCred.user?.updateDisplayName(fullName);
-      await userCred.user?.updatePhotoURL(kDefaultAvatar);
+      // await userCred.user?.updatePhotoURL(kDefaultAvatar);
       await _setUserData(_authClient.currentUser!, email);
     } on FirebaseAuthException catch (e) {
       throw ServerException(
@@ -192,8 +191,8 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
           await _authClient.currentUser?.updateDisplayName(userData as String);
           await _updateUserData({'fullName': userData});
 
-        case UpdateUserAction.bio:
-          await _updateUserData({'bio': userData as String});
+        case UpdateUserAction.phoneNumber:
+          await _updateUserData({'phoneNumber': userData as String});
 
         case UpdateUserAction.profilePic:
           // Get reference from Firebase Storage
@@ -255,7 +254,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
           LocalUserModel(
             uid: user.uid,
             email: user.email ?? fallbackEmail,
-            role: 'member',
+            role: 'Guest',
             fullName: user.displayName ?? '',
             profilePic: user.photoURL ?? '',
           ).toMap(),

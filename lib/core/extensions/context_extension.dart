@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:toknote/core/common/app/providers/tab_navigator.dart';
 import 'package:toknote/core/common/app/providers/user_provider.dart';
 import 'package:toknote/src/auth/domain/entities/user.dart';
 
@@ -29,4 +30,16 @@ extension ContextExt on BuildContext {
   /// Easily retrieve the current user object (`LocalUser`) stored in the
   /// `UserProvider`. Simplifies accessing user data.
   LocalUser? get currentUser => userProvider.user;
+
+  /// Access a `TabNavigator` object from the nearest ancestor widget using the
+  /// `read` method from `Provider`. Useful for navigation actions in your app.
+  TabNavigator get tabNavigator => read<TabNavigator>();
+
+  /// Trigger the navigation stack's pop operation, typically used for navigating
+  /// back to the previous screen or page.
+  void pop() => tabNavigator.pop();
+
+  /// Push a new screen or page onto the navigation stack by calling `push()` on
+  /// the `TabNavigator`. Provide a widget as a child of a new `TabItem`.
+  void push(Widget page) => tabNavigator.push(TabItem(child: page));
 }

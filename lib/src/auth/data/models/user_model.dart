@@ -14,15 +14,17 @@ class LocalUserModel extends LocalUser {
   /// from the base `LocalUser` class.
   ///
   /// Optional parameters:
-  /// - `profilePic`: The URL or reference to the user's profile picture.
-  /// - `bio`: A short biography or description of the user.
+  /// - `profilePic`: The URL or reference to the user's profile picture (optional).
+  /// - `phoneNumber`: The user's phone number (optional).
+  /// - `enrolledStoreIds`: A list of store IDs where the user is enrolled (optional).
   const LocalUserModel({
     required super.uid,
     required super.email,
     required super.role,
     required super.fullName,
     super.profilePic,
-    super.bio,
+    super.phoneNumber,
+    super.enrolledStoreIds,
   });
 
   /// Creates an empty `LocalUserModel` entity with default values.
@@ -48,7 +50,8 @@ class LocalUserModel extends LocalUser {
   /// - `'role'`: The user's role or user type.
   /// - `'fullName'`: The user's full name.
   /// - `'profilePic'`: The URL or reference to the user's profile picture (optional).
-  /// - `'bio'`: A short biography or description of the user (optional).
+  /// - `'phoneNumber'`: The user's phone number (optional).
+  /// - `'enrolledStoreIds'`: A list of store IDs where the user is enrolled (optional).
   ///
   /// Any missing or null values in the `map` will be replaced with default values.
   LocalUserModel.fromMap(DataMap map)
@@ -58,7 +61,9 @@ class LocalUserModel extends LocalUser {
           role: map['role'] as String,
           fullName: map['fullName'] as String,
           profilePic: map['profilePic'] as String?,
-          bio: map['bio'] as String?,
+          phoneNumber: map['phoneNumber'] as String?,
+          enrolledStoreIds:
+              (map['enrolledStoreIds'] as List<dynamic>).cast<String>(),
         );
 
   /// Creates a copy of this `LocalUserModel` object with optional property changes.
@@ -71,7 +76,8 @@ class LocalUserModel extends LocalUser {
     String? role,
     String? fullName,
     String? profilePic,
-    String? bio,
+    String? phoneNumber,
+    List<String>? enrolledStoreIds,
   }) {
     return LocalUserModel(
       uid: uid ?? this.uid,
@@ -79,7 +85,8 @@ class LocalUserModel extends LocalUser {
       role: role ?? this.role,
       fullName: fullName ?? this.fullName,
       profilePic: profilePic ?? this.profilePic,
-      bio: bio ?? this.bio,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      enrolledStoreIds: enrolledStoreIds ?? this.enrolledStoreIds,
     );
   }
 
@@ -94,7 +101,8 @@ class LocalUserModel extends LocalUser {
       'role': role,
       'fullName': fullName,
       'profilePic': profilePic,
-      'bio': bio,
+      'phoneNumber': phoneNumber,
+      'enrolledStoreIds': enrolledStoreIds,
     };
   }
 }

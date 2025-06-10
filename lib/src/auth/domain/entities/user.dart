@@ -6,7 +6,8 @@ import 'package:equatable/equatable.dart';
 ///
 /// A `LocalUser` object contains essential information about a user, such as
 /// their unique identifier (UID), email address, role, full name, profile picture,
-/// and bio. This class is used for managing user data locally within the application.
+/// phone number, enrolled store IDs, and other UID. This class is used for
+/// managing user data locally within the application.
 class LocalUser extends Equatable {
   /// Creates a `LocalUser` object with the provided user information.
   ///
@@ -17,18 +18,18 @@ class LocalUser extends Equatable {
   /// - `fullName`: The user's full name.
   ///
   /// Optional parameters:
-  /// - `profilePic`: The URL or reference to the user's profile picture.
-  /// - `bio`: A short biography or description of the user.
-  /// - `otherUid`: A unique identifier for another user (not stored in the database).
-  ///
-  /// To create an empty user entity, you can use the `LocalUser.empty()` constructor.
+  /// - `profilePic`: The URL or reference to the user's profile picture (optional).
+  /// - `phoneNumber`: The user's phone number (optional).
+  /// - `enrolledStoreIds`: A list of store IDs where the user is enrolled.
+  /// - `otherUid`: A unique identifier for another user (not stored in the database, optional).
   const LocalUser({
     required this.uid,
     required this.email,
     required this.role,
     required this.fullName,
     this.profilePic,
-    this.bio,
+    this.phoneNumber = '',
+    this.enrolledStoreIds = const [],
     this.otherUid,
   });
 
@@ -42,6 +43,8 @@ class LocalUser extends Equatable {
           role: '',
           fullName: '',
           profilePic: '',
+          phoneNumber: '',
+          enrolledStoreIds: const [],
         );
 
   /// The unique identifier for the user.
@@ -59,27 +62,32 @@ class LocalUser extends Equatable {
   /// The URL or reference to the user's profile picture (optional).
   final String? profilePic;
 
-  /// A short biography or description of the user (optional).
-  final String? bio;
+  /// The user's phone number (optional).
+  final String? phoneNumber;
+
+  /// A list of store IDs where the user is enrolled.
+  final List<String> enrolledStoreIds;
 
   /// A unique identifier for another user (not stored in the database).
   final String? otherUid;
 
   /// Override of the `props` getter from Equatable to define equality.
   @override
-  List<String?> get props => [
+  List<Object?> get props => [
         uid,
         email,
         fullName,
         profilePic,
-        bio,
+        role,
+        phoneNumber,
+        enrolledStoreIds.length,
         otherUid,
       ];
 
   /// Generates a string representation of the `LocalUser` object for debugging purposes.
   @override
   String toString() {
-    return 'LocalUser{uid: $uid, email: $email, bio: $bio, role: $role, '
-        'fullName: $fullName}';
+    return 'LocalUser{uid: $uid, email: $email, phoneNumber: $phoneNumber, '
+        'enrolledStoreIds: $enrolledStoreIds, role: $role, fullName: $fullName}';
   }
 }

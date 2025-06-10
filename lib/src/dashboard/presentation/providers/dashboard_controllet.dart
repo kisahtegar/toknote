@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:toknote/core/common/app/providers/tab_navigator.dart';
 import 'package:toknote/core/common/views/page_under_construction.dart';
 import 'package:toknote/core/common/views/persistent_view.dart';
+import 'package:toknote/src/profile/presentation/views/profile_view.dart';
 
 /// `DashboardController` is responsible for managing the state and navigation
 /// within your dashboard, while the `PersistentView` widget is responsible for
@@ -47,11 +48,7 @@ class DashboardController extends ChangeNotifier {
       child: const PersistentView(),
     ),
     ChangeNotifierProvider(
-      create: (_) => TabNavigator(
-        TabItem(
-          child: const PageUnderConstruction(title: 'ProfileView'),
-        ),
-      ),
+      create: (_) => TabNavigator(TabItem(child: const ProfileView())),
       child: const PersistentView(),
     ),
   ];
